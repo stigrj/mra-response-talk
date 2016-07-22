@@ -1,0 +1,124 @@
+\begin{frame}
+\frametitle{Magnetic linear response}
+
+\begin{columns}
+\begin{column}[b]{0.48\linewidth}
+    \centering
+    \textbf{NMR shielding tensor}
+    \begin{equation}
+        \nonumber
+        \sigma_K = \left. \frac{\ud^2 E}{\ud \boldsymbol{M}_K \ud
+        \boldsymbol{B}}\right|_{\boldsymbol{B},\boldsymbol{M}_K=0}
+    \end{equation}
+\end{column}
+
+\begin{column}[b]{0.48\linewidth}
+    \centering
+    \textbf{Interaction operators}
+    \begin{equation}
+        \nonumber
+        \hat{h}^{(B,M_K)} = 
+        \left. \frac{\ud^2 \hat{H}}{\ud \boldsymbol{M}_K \ud
+        \boldsymbol{B}}\right|_{\boldsymbol{B},\boldsymbol{M}_K=0}
+    \end{equation}
+\end{column}
+
+\end{columns}
+
+\vspace{10mm}
+
+\pause
+\centering
+\textbf{Second-order (diamagnetic) operator}
+\begin{equation}
+    \nonumber
+    \hat{h}^{(B,M_K)} = \frac{\alpha^2}{2} 
+    \sum_j^{el} \frac{\left(r_{jO}\cdot r_{jK}\right)1 -
+    r_{jO}r_{jK}^T}{r_{jK}^3}
+\end{equation}
+
+\vspace{5mm}
+
+\pause
+\textbf{First-order (paramagnetic) operators}
+\begin{equation}
+    \nonumber
+    \hat{h}^{(B)} = \frac{1}{2}\sum_j^{el} \hat{l}_{jO} \qquad \qquad \qquad
+    \hat{h}^{(M_K)} = \alpha^2 \sum_j^{el} \frac{\hat{l}_{jK}}{r_{jK}^3}
+\end{equation}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Magnetic linear response}
+
+\centering
+\textbf{Sternheimer equations}
+\begin{equation}
+    \nonumber
+    \ket{\orbital_i^{(B)}} =\
+    -2\Helmholtz{\hat{V}^{(0)}\ket{\orbital_i^{(B)}}
+    + \left(1 - \hat{\rho}^{(0)}\right)\hat{F}^{(B)}\ket{\orbital_i^{(0)}}}
+\end{equation}
+
+\vspace{5mm}
+
+\textbf{Perturbed Fock operator}
+\begin{equation}
+    \nonumber
+    \hat{F}^{(B)} = \hat{h}^{(B)} + \hat{J}^{(1)} + \hat{K}^{(1)} +
+    \hat{V}_{xc}^{(1)}
+\end{equation}
+
+\vspace{10mm}
+
+\pause
+\textbf{NMR shielding evaluation}
+\begin{align}
+    \nonumber
+    \sigma_K^{dia} 
+    &= \int \hat{\rho}^{(0)}\hat{h}^{(B,M_K)} \ud r \quad
+    = \sum_i\bra{\orbital_i^{(0)}}\hat{h}^{(B,M_K)}\ket{\orbital_i^{(0)}} \\
+    \nonumber
+    \sigma_K^{para} 
+    &= \int \hat{\rho}^{(B)}\hat{h}^{(M_K)} \ud r \qquad
+    = \sum_i
+    \bra{\orbital_i^{(0)}}\hat{h}^{(M_K)}\ket{\orbital_i^{(B)}}\ +\ 
+    \bra{\orbital_i^{(B)}}\hat{h}^{(M_K)}\ket{\orbital_i^{(0)}}
+\end{align}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Magnesium Oxide}
+    
+%\centering
+%\textbf{Hartree-Fock shielding constant (ppm)}
+%\begin{table}
+%\begin{tabular}{crrr}
+%\hline
+%\hline
+%    &              &            &             \\
+%    &              &
+%\multicolumn{1}{c}{$\sigma(Mg)$}              &
+%\multicolumn{1}{c}{$\sigma(O)$}	              \\
+%    &              &            &             \\
+%MW  & $10^{-4}$    &  1538.9211 & -16726.3490 \\
+%    & $10^{-5}$    &  1584.1109 & -17466.4867 \\
+%    & $10^{-6}$    &  1578.7322 & -17358.6849 \\
+%    & $10^{-7}$    &  1579.4610 & -17375.4221 \\
+%    &              &            &             \\
+%GTO & pcS-4        &  1617.5056 & -18143.8405 \\
+%    & pcS-3        &  1757.7204 & -20822.5428 \\
+%    & pcS-2        &-19388.2423 & 386900.5044 \\
+%    & pcS-1        &    94.4529 &  11293.4315 \\
+%    & pcS-0        &   448.6993 &   4880.3077 \\
+%    &              &            &             \\
+%\hline
+%\hline
+%\end{tabular}
+%\end{table}
+%
+%Frank Jensen's polarization consistent basis sets\\
+%GTO calculations with Dalton
+%
+%\end{frame}

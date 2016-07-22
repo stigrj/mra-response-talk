@@ -11,6 +11,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{color}
+\usepackage{braket}
 \usepackage{verbatim}
 \usepackage{amsbsy}
 \usepackage{multirow}
@@ -34,26 +35,20 @@
 %\setbeamertemplate{footline}{\quad\insertframenumber}
 %\usecolortheme{CTCC}
 }
-\usebackgroundtemplate{\includegraphics[width=1.02\paperwidth]{../templets/ctcc_general.jpg}}
+\usebackgroundtemplate{\includegraphics[width=1.02\paperwidth] {figures/ctcc_general.jpg}}
 
 \title{\\\vspace{1cm}
-Magnetic properties with multiwavelets
-}
+Benchmarking DFT functionals on \\ magnetic properties}
 %\subtitle{\textcolor{magenta}{My subtitle (if applicable)}}
 \author{Stig Rune Jensen}
-\institute[CTCC]{\\[-6mm]stig.r.jensen@uit.no\\[6mm]UiT - The Arctic University of Norway\\[6mm]
-\includegraphics[height=1.5cm]{../templets/uio.pdf}\hspace{1cm} 
-\includegraphics[height=1.5cm]{../templets/sff.pdf}\hspace{1cm}
-\includegraphics[height=1.5cm]{../templets/uit.pdf}}
-\date{Stony Brook, 4 August 2016}
+\institute[CTCC]{\\[-6mm]stig.r.jensen@uit.no\\
+[6mm]UiT - The Arctic University of Norway\\[6mm]
+\includegraphics[height=1.5cm]{figures/uio.pdf}\hspace{1cm} 
+\includegraphics[height=1.5cm]{figures/sff.pdf}\hspace{1cm}
+\includegraphics[height=1.5cm]{figures/uit.pdf}}
+\date{CTCC meeting in Alta\\ April 7 2016}
 
-\newcommand{\gb}[1]{green!#1!black}
-\newcommand{\rb}[1]{red!#1!black}
-\newcommand{\bb}[1]{blue!#1!black}
-\newcommand{\coleq}{red!60!black}
-\newcommand{\du}{\textrm{d}}
-
-\newcommand{\red}[1]{\textcolor{red}{#1}}
+\include{newcommands}
 
 \begin{document}
 
@@ -61,40 +56,17 @@ Magnetic properties with multiwavelets
 \setlength{\unitlength}{\textwidth}
 
 {
-\usebackgroundtemplate{\includegraphics[width=1.02\paperwidth]{../templets/ctcc_forside.jpg}}
+\usebackgroundtemplate{\includegraphics[width=1.02\paperwidth] {figures/ctcc_forside.jpg}}
 \maketitle
 }
 
-\begin{frame}
-    \frametitle{Outlook}
-    \begin{itemize}
-	\item   \textbf{Magnetic properties}
-	\begin{itemize}
-	    \item General second order prop
-            \item Magnetizability
-            \item NMR shielding
-            \item Origin dependence
-	\end{itemize}
-
-        \vspace{5mm}
-
-	\item   \textbf{Linear response}
-	\begin{itemize}
-	    \item Static perturbation
-            \item Response equations
-            \item MRA linear response
-            \item Iterative algorithm
-	\end{itemize}
-
-        \vspace{5mm}
-
-	\item   \textbf{Results}
-	\begin{itemize}
-            \item Origin independence
-            \item Accuracy
-            \item DFT limit NMR
-	\end{itemize}
-    \end{itemize}
-\end{frame}
+\include{introduction}
+\include{mw_theory}
+\include{dft}
+\include{scf}
+\include{magnetic_response}
+\include{magnetic_benchmark}
+\include{conclusions}
+\include{acknowlegments}
 
 \end{document}
