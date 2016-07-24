@@ -1,0 +1,220 @@
+\begin{frame}
+    \frametitle{Unperturbed system}
+    \begin{columns}
+    \begin{column}[b]{0.5\linewidth}
+    \centering
+    \textbf{Kohn-Sham equations}
+    \begin{equation}
+        \nonumber
+        \fockOper\ket{\orbital_i} = \sum_j F_{ji}\ket{\orbital_j}
+    \end{equation}
+    \end{column}
+    \begin{column}[b]{0.5\linewidth}
+    \centering
+    \textbf{Potential operator} $0 \leq \alpha \leq 1$
+    \begin{equation}
+        \nonumber
+        \potential = \nuclear + \coulomb - \alpha\exchange + \xc
+    \end{equation}
+    \end{column}
+    \end{columns}
+
+    \vspace{5mm}
+
+    \begin{columns}
+    \begin{column}[b]{0.5\linewidth}
+    \centering
+    \textbf{Fock matrix}
+    \begin{equation}
+        \nonumber
+        F_{ij} = \bra{\orbital_i}\kinetic + \potential\ket{\orbital_j}
+    \end{equation}
+
+    \vspace{8mm}
+
+    \textbf{One-particle density matrix}
+    \begin{equation}
+        \nonumber
+        \rho(r,r') = \sum_i \orbital_i(r)\orbital_i^\dag(r')
+    \end{equation}
+    \end{column}
+    \begin{column}[b]{0.5\linewidth}
+
+    \centering
+    \textbf{Two-electron operators}
+    \begin{align}
+        \nonumber
+        \coulomb \ket{\orbital_p} &= \int\frac{\rho(r',r')\orbital_p(r)}{|r-r'|} \ud r'\\
+        \nonumber
+        \exchange \ket{\orbital_p} &= \int\frac{\rho(r,r')\orbital_p(r')}{|r-r'|} \ud r'\\
+        \nonumber
+        \xc \ket{\orbital_p} &= \bigg[\frac{\delta E_{xc}}{\delta \rho}\big[\rho(r,r)\big]\bigg] \orbital_p(r) 
+    \end{align}
+    \end{column}
+    \end{columns}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Integral form}
+    \begin{equation}
+        \nonumber
+        \ket{\orbital_i} = -2\hat{G}_i\bigg[\potential\ket{\orbital_i} -
+        \sum_j \Big(F_{ji} - \Lambda_{ji}\Big)\ket{\orbital_j}\bigg]
+    \end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Perturbed system}
+    \centering
+    \textbf{Static perturbation}
+    \begin{equation}
+        \nonumber
+        \hamiltonian = \pert{\hamiltonian}{0} + \pert{\hamiltonian}{1}
+    \end{equation}
+
+    \textbf{Perturbed orbitals}
+    \begin{equation}
+        \nonumber
+        \orbital_i = \pert{\orbital_i}{0} + \pert{\orbital_i}{1}
+    \end{equation}
+
+    \textbf{Density operators}
+    \begin{align}
+        \nonumber
+        \density &= \pert{\density}{0} + \pert{\density}{1}\\
+        \nonumber
+        \pert{\density}{0} &= \sum_i
+        \ket{\pert{\orbital_i}{0}}\bra{\pert{\orbital_i}{0}}\\
+        \nonumber
+        \pert{\density}{1} &=
+        \ket{\pert{\orbital_i}{0}}\bra{\pert{\orbital_i}{1}} +
+        \ket{\pert{\orbital_i}{1}}\bra{\pert{\orbital_i}{0}}
+    \end{align}
+
+    \textbf{Fock operator}
+    \begin{align}
+        \nonumber
+        \fockOper &= \pert{\fockOper}{0} + \pert{\fockOper}{1}\\
+        \pert{\fockOper}{1} &= \pert{\hamiltonian}{1} + \pert{\potential}{1}\\
+        \pert{\potential}{1} &= 
+        \pert{\coulomb}{1} - \alpha
+        \pert{\exchange}{1} +
+        \pert{\xc}{1}
+    \end{align}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Two-electron operators}
+    \begin{columns}
+    \begin{column}[b]{0.4\linewidth}
+    \centering
+    \textbf{Unperturbed}
+    \begin{align}
+        \nonumber
+        \pert{\coulomb}{0} \ket{\orbital_p} &= \int\frac{\pert{\rho}{0}(r',r')\orbital_p(r)}{|r-r'|} \ud r'\\
+        \nonumber
+        \pert{\exchange}{0} \ket{\orbital_p} &= \int\frac{\pert{\rho}{0}(r,r')\orbital_p(r')}{|r-r'|} \ud r'\\
+        \nonumber
+        \pert{\xc}{0} \ket{\orbital_p} &= \bigg[\frac{\delta E_{xc}}{\delta\rho}\big[\pert{\rho}{0}\big]\bigg] \orbital_p(r) 
+    \end{align}
+    \end{column}
+    \begin{column}[b]{0.6\linewidth}
+    \centering
+    \textbf{Perturbed}
+    \begin{align}
+        \nonumber
+        \pert{\coulomb}{1} \ket{\orbital_p} &= \int\frac{\pert{\rho}{1}(r',r')\orbital_p(r)}{|r-r'|} \ud r'\\
+        \nonumber
+        \pert{\exchange}{1} \ket{\orbital_p} &= \int\frac{\pert{\rho}{1}(r,r')\orbital_p(r')}{|r-r'|} \ud r'\\
+        \nonumber
+        \pert{\xc}{1} \ket{\orbital_p} &= \bigg[\frac{\delta^2 E_{xc}}{\delta
+        \rho^2}\big[\pert{\rho}{0}\big]*\pert{\rho}{1}\bigg] \orbital_p(r) 
+    \end{align}
+    \end{column}
+    \end{columns}
+
+    \vspace{5mm}
+
+\only<1>{
+    \centering
+    \textbf{Coulomb}
+    \begin{equation}
+        \nonumber
+        \pert{\coulomb}{1} \ket{\orbital_p} = 
+        \bigg[\int \frac{\pert{\rho}{1}(r',r')}{4\pi[r-r'|}\ud r'\bigg]\orbital_p(r)
+    \end{equation}
+}
+
+\only<2>{
+    \centering
+    \textbf{Hartree-Fock exchange}
+    \begin{align}
+        \nonumber
+        \pert{\exchange}{1} \ket{\orbital_p}
+        &= \sum_i 
+        \pert{\orbital_i}{1}(r) \int
+        \frac{\orbital_i^{(0)\dagger}(r')\orbital_p(r')}{4\pi|r-r'|} \ud r' \\
+        \nonumber
+        &+ \sum_i 
+        \pert{\orbital_i}{0}(r) \int
+        \frac{\orbital_i^{(1)\dagger}(r')\orbital_p(r')}{4\pi|r-r'|} \ud r'
+    \end{align}
+}
+
+\only<3>{
+    \centering
+    \textbf{Exchange-Correlation} $\gamma = \nabla\rho\cdot\nabla\rho$
+    \begin{align}
+        \nonumber
+        \pert{\xc}{1} \ket{\orbital_p}
+        = \bigg[&
+        \frac{\partial^2 F_{xc}}{\partial \rho^2}\pert{\rho}{1} +
+        2\frac{\partial^2 F_{xc}}{\partial \rho \partial \gamma}
+        \Big(\nabla\pert{\rho}{0}\cdot\nabla\pert{\rho}{1}\Big) -\\
+        \nonumber
+        &\nabla\cdot\bigg(
+        \Big(\nabla\pert{\rho}{0}\Big)
+        \Big[
+        2\frac{\partial^2 F_{xc}}{\partial\rho\partial\gamma}\pert{\rho}{1} +
+        4\frac{\partial^2 F_{xc}}{\partial\gamma^2}
+        \Big(\nabla\pert{\rho}{0}\cdot\pert{\rho}{1}\Big)
+        \Big]
+        \bigg) -\\
+        \nonumber
+        &\nabla\cdot\bigg(
+        \Big(\nabla\pert{\rho}{1}\Big)\frac{\partial F_{xc}}{\partial\gamma}
+        \bigg)
+        \bigg] \ket{\orbital_p}
+    \end{align}
+}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Perturbed system}
+    \centering
+    \textbf{Sternheimer equations}
+    \begin{equation}
+        \nonumber
+        \pert{\fockOper}{0}\ket{\pert{\orbital_i}{1}} +
+        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}} =
+        \sum_j \pert{F_{ji}}{0}\ket{\pert{\orbital_j}{1}} + 
+        \sum_j \pert{F_{ji}}{1}\ket{\pert{\orbital_j}{0}}
+    \end{equation}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Integral form}
+    \begin{equation}
+        \nonumber
+        \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
+        \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
+        \sum_j \Big(\pert{F}{0}_{ji} - \pert{\Lambda}{0}_{ji}\Big)
+        \ket{\pert{\orbital_j}{1}} +
+        \Big(1 - \pert{\density}{0}\Big)
+        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
+        \bigg]
+    \end{equation}
+\end{frame}
+
