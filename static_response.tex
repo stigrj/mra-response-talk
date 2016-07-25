@@ -56,7 +56,7 @@
     \vspace{5mm}
 
     \centering
-    \textbf{Integral form}
+    \textbf{Integral form} $\lambda_{i} \approx F_{ii}$
     \begin{equation}
         \nonumber
         \ket{\orbital_i} = -2\hat{G}_i\bigg[\potential\ket{\orbital_i} -
@@ -64,43 +64,78 @@
     \end{equation}
 \end{frame}
 
+
 \begin{frame}
     \frametitle{Perturbed system}
+    \begin{columns}
+    \begin{column}[b]{0.5\linewidth}
     \centering
     \textbf{Static perturbation}
     \begin{equation}
         \nonumber
-        \hamiltonian = \pert{\hamiltonian}{0} + \pert{\hamiltonian}{1}
+        \hat{H} = \pert{\hamiltonian}{0} + \pert{\hamiltonian}{1}
     \end{equation}
+    \end{column}
 
+    \begin{column}[b]{0.5\linewidth}
+    \centering
     \textbf{Perturbed orbitals}
     \begin{equation}
         \nonumber
         \orbital_i = \pert{\orbital_i}{0} + \pert{\orbital_i}{1}
     \end{equation}
+    \end{column}
+    \end{columns}
 
-    \textbf{Density operators}
+    \vspace{5mm}
+
+    \centering
+    \textbf{Perturbed Fock operator}
     \begin{align}
         \nonumber
-        \density &= \pert{\density}{0} + \pert{\density}{1}\\
+        \pert{\fockOper}{1} &= \pert{\hamiltonian}{1} + \pert{\potential}{1}
+    \end{align}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Sternheimer equations}
+    \begin{equation}
+        \nonumber
+        \pert{\fockOper}{0}\ket{\pert{\orbital_i}{1}} +
+        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}} =
+        \sum_j \pert{F_{ji}}{0}\ket{\pert{\orbital_j}{1}} + 
+        \sum_j \pert{F_{ji}}{1}\ket{\pert{\orbital_j}{0}}
+    \end{equation}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Integral form} $\lambda_{i} \approx \pert{F}{0}_{ii}$
+    \begin{equation}
+        \nonumber
+        \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
+        \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
+        \sum_j \Big(\pert{F}{0}_{ji} - \Lambda_{ji}\Big)
+        \ket{\pert{\orbital_j}{1}} +
+        \Big(1 - \pert{\density}{0}\Big)
+        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
+        \bigg]
+    \end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Perturbed system}
+    \centering
+    \textbf{Density operators}
+    \begin{align}
         \nonumber
         \pert{\density}{0} &= \sum_i
         \ket{\pert{\orbital_i}{0}}\bra{\pert{\orbital_i}{0}}\\
         \nonumber
-        \pert{\density}{1} &=
+        \pert{\density}{1} &= \sum_i \bigg[
         \ket{\pert{\orbital_i}{0}}\bra{\pert{\orbital_i}{1}} +
-        \ket{\pert{\orbital_i}{1}}\bra{\pert{\orbital_i}{0}}
-    \end{align}
-
-    \textbf{Fock operator}
-    \begin{align}
-        \nonumber
-        \fockOper &= \pert{\fockOper}{0} + \pert{\fockOper}{1}\\
-        \pert{\fockOper}{1} &= \pert{\hamiltonian}{1} + \pert{\potential}{1}\\
-        \pert{\potential}{1} &= 
-        \pert{\coulomb}{1} - \alpha
-        \pert{\exchange}{1} +
-        \pert{\xc}{1}
+        \ket{\pert{\orbital_i}{1}}\bra{\pert{\orbital_i}{0}} \bigg]
     \end{align}
 \end{frame}
 
@@ -111,6 +146,9 @@
     \centering
     \textbf{Unperturbed}
     \begin{align}
+        \nonumber
+        \pert{\potential}{0} &= \pert{\coulomb}{0} -\alpha\pert{\exchange}{0} + \pert{\xc}{0}\\
+        \nonumber & \\
         \nonumber
         \pert{\coulomb}{0} \ket{\orbital_p} &= \int\frac{\pert{\rho}{0}(r',r')\orbital_p(r)}{|r-r'|} \ud r'\\
         \nonumber
@@ -123,6 +161,9 @@
     \centering
     \textbf{Perturbed}
     \begin{align}
+        \nonumber
+        \pert{\potential}{1} &= \pert{\coulomb}{1} -\alpha\pert{\exchange}{1} + \pert{\xc}{1}\\
+        \nonumber & \\
         \nonumber
         \pert{\coulomb}{1} \ket{\orbital_p} &= \int\frac{\pert{\rho}{1}(r',r')\orbital_p(r)}{|r-r'|} \ud r'\\
         \nonumber
@@ -137,16 +178,25 @@
     \vspace{5mm}
 
 \only<1>{
+
+    \vspace{31mm}
+
+}
+
+\only<2>{
     \centering
     \textbf{Coulomb}
     \begin{equation}
         \nonumber
         \pert{\coulomb}{1} \ket{\orbital_p} = 
-        \bigg[\int \frac{\pert{\rho}{1}(r',r')}{4\pi[r-r'|}\ud r'\bigg]\orbital_p(r)
+        \bigg[\int \frac{\pert{\rho}{1}(r',r')}{4\pi|r-r'|}\ud r'\bigg]\orbital_p(r)
     \end{equation}
+
+    \vspace{16.7mm}
+
 }
 
-\only<2>{
+\only<3>{
     \centering
     \textbf{Hartree-Fock exchange}
     \begin{align}
@@ -160,9 +210,12 @@
         \pert{\orbital_i}{0}(r) \int
         \frac{\orbital_i^{(1)\dagger}(r')\orbital_p(r')}{4\pi|r-r'|} \ud r'
     \end{align}
+
+    \vspace{4.4mm}
+
 }
 
-\only<3>{
+\only<4>{
     \centering
     \textbf{Exchange-Correlation} $\gamma = \nabla\rho\cdot\nabla\rho$
     \begin{align}
@@ -178,7 +231,7 @@
         \Big[
         2\frac{\partial^2 F_{xc}}{\partial\rho\partial\gamma}\pert{\rho}{1} +
         4\frac{\partial^2 F_{xc}}{\partial\gamma^2}
-        \Big(\nabla\pert{\rho}{0}\cdot\pert{\rho}{1}\Big)
+        \Big(\nabla\pert{\rho}{0}\cdot\nabla\pert{\rho}{1}\Big)
         \Big]
         \bigg) -\\
         \nonumber
@@ -189,32 +242,3 @@
     \end{align}
 }
 \end{frame}
-
-\begin{frame}
-    \frametitle{Perturbed system}
-    \centering
-    \textbf{Sternheimer equations}
-    \begin{equation}
-        \nonumber
-        \pert{\fockOper}{0}\ket{\pert{\orbital_i}{1}} +
-        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}} =
-        \sum_j \pert{F_{ji}}{0}\ket{\pert{\orbital_j}{1}} + 
-        \sum_j \pert{F_{ji}}{1}\ket{\pert{\orbital_j}{0}}
-    \end{equation}
-
-    \vspace{5mm}
-
-    \centering
-    \textbf{Integral form}
-    \begin{equation}
-        \nonumber
-        \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
-        \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
-        \sum_j \Big(\pert{F}{0}_{ji} - \pert{\Lambda}{0}_{ji}\Big)
-        \ket{\pert{\orbital_j}{1}} +
-        \Big(1 - \pert{\density}{0}\Big)
-        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
-        \bigg]
-    \end{equation}
-\end{frame}
-

@@ -1,45 +1,94 @@
 \begin{frame}
-\frametitle{Magnetic linear response}
+\frametitle{Magnetic properties}
+
+\centering
+\textbf{Second order property}
+\begin{equation}
+    \nonumber
+    M = \left. \frac{\ud^2 E}{\ud b \ud a}\right|_{a,b=0}
+\end{equation}
+
+\vspace{8mm}
 
 \begin{columns}
-\begin{column}[b]{0.48\linewidth}
+\begin{column}[b]{0.2\linewidth}
+\end{column}
+
+\begin{column}[b]{0.6\linewidth}
+\begin{itemize}
+    \item External magnetic field $\boldsymbol{B}$
+    \item Nuclear magnetic moment $\boldsymbol{M}_K$ of nucleus $K$
+\end{itemize}
+\end{column}
+
+\begin{column}[b]{0.2\linewidth}
+\end{column}
+\end{columns}
+
+\vspace{13mm}
+
+\begin{columns}
+\begin{column}[b]{0.3\linewidth}
+    \centering
+    \textbf{Magnetizability tensor}
+    \begin{equation}
+        \nonumber
+        \xi = \left. \frac{\ud^2 E}{\ud \boldsymbol{B} \ud \boldsymbol{B}}\right|_{\boldsymbol{B}=0}
+    \end{equation}
+\end{column}
+
+\begin{column}[b]{0.4\linewidth}
     \centering
     \textbf{NMR shielding tensor}
     \begin{equation}
         \nonumber
         \sigma_K = \left. \frac{\ud^2 E}{\ud \boldsymbol{M}_K \ud
-        \boldsymbol{B}}\right|_{\boldsymbol{B},\boldsymbol{M}_K=0}
+        \boldsymbol{B}}\right|_{\boldsymbol{M}_K,\boldsymbol{B}=0}
+    \end{equation}
+\end{column}
+
+\begin{column}[b]{0.4\linewidth}
+    \centering
+    \textbf{Spin-spin coupling tensor}
+    \begin{equation}
+        \nonumber
+        K_{KL} = \left. \frac{\ud^2 E}{\ud \boldsymbol{M}_K\ud
+        \boldsymbol{M}_L}\right|_{\boldsymbol{M}_K,\boldsymbol{M}_L=0}
+    \end{equation}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Magnetic properties}
+
+\begin{columns}
+\begin{column}[b]{0.48\linewidth}
+    \centering
+    \textbf{First-order interaction}
+    \begin{equation}
+        \nonumber
+        \hat{h}^{(a)} = 
+        \left. \frac{\ud \hat{H}}{\ud a}\right|_{a=0}
     \end{equation}
 \end{column}
 
 \begin{column}[b]{0.48\linewidth}
     \centering
-    \textbf{Interaction operators}
+    \textbf{Second-order interaction}
     \begin{equation}
         \nonumber
-        \hat{h}^{(B,M_K)} = 
-        \left. \frac{\ud^2 \hat{H}}{\ud \boldsymbol{M}_K \ud
-        \boldsymbol{B}}\right|_{\boldsymbol{B},\boldsymbol{M}_K=0}
+        \hat{h}^{(a,b)} = 
+        \left. \frac{\ud^2 \hat{H}}{\ud b \ud a}\right|_{a,b=0}
     \end{equation}
 \end{column}
-
 \end{columns}
-
-\vspace{10mm}
-
-\pause
-\centering
-\textbf{Second-order (diamagnetic) operator}
-\begin{equation}
-    \nonumber
-    \hat{h}^{(B,M_K)} = \frac{\alpha^2}{2} 
-    \sum_j^{el} \frac{\left(r_{jO}\cdot r_{jK}\right)1 -
-    r_{jO}r_{jK}^T}{r_{jK}^3}
-\end{equation}
 
 \vspace{5mm}
 
-\pause
+\centering
 \textbf{First-order (paramagnetic) operators}
 \begin{equation}
     \nonumber
@@ -47,78 +96,149 @@
     \hat{h}^{(M_K)} = \alpha^2 \sum_j^{el} \frac{\hat{l}_{jK}}{r_{jK}^3}
 \end{equation}
 
+\vspace{5mm}
+
+\textbf{Second-order (diamagnetic) operators}
+\begin{align}
+    \nonumber
+    \hat{h}^{(B,B)} &= 
+    \sum_j^{el} \left(r_{jO}\cdot r_{jO}\right)1 - r_{jO}r_{jO}^T\\
+    \nonumber
+    \hat{h}^{(B,M_K)} &= \frac{\alpha^2}{2} 
+    \sum_j^{el} \frac{\left(r_{jO}\cdot r_{jK}\right)1 -
+    r_{jO}r_{jK}^T}{r_{jK}^3}
+\end{align}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Magnetic properties}
+\centering
+\textbf{Traditional formulation}
+\begin{equation}
+    \nonumber
+    M = \bra{0}\pert{\hamiltonian}{a,b}\ket{0} - 2\sum_{n \neq 0}
+    \frac{\bra{0}\pert{\hamiltonian}{a}\ket{n}\bra{n}\pert{\hamiltonian}{b}\ket{0}}
+    {E_n - E_0}
+\end{equation}
+
+\vspace{7mm}
+
+\textbf{Density matrix formulation}
+\begin{equation}
+    \nonumber
+    M = Tr\Big[\pert{D}{0}\pert{h}{a,b}\Big] + Tr\Big[\pert{D}{a}\pert{h}{b}\Big]
+\end{equation}
+
+\vspace{7mm}
+
+\textbf{Real-space formulation}
+\begin{equation}
+    \nonumber
+    M = 
+    \int \pert{\density}{0}\pert{\hamiltonian}{a,b} \ud r +
+    \int \pert{\density}{a}\pert{\hamiltonian}{b} \ud r
+\end{equation}
+\begin{equation}
+    \nonumber
+    M = \sum_i
+    \bra{\pert{\orbital_i}{0}}\pert{\hamiltonian}{a,b}\ket{\pert{\orbital_i}{0}} 
+    + \sum_i \bigg[
+    \bra{\pert{\orbital_i}{0}}\pert{\hamiltonian}{b}\ket{\pert{\orbital_i}{a}} +
+    \bra{\pert{\orbital_i}{a}}\pert{\hamiltonian}{b}\ket{\pert{\orbital_i}{0}}
+    \bigg]
+\end{equation}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Magnetic properties}
+\centering
+\textbf{Magnetizability tensor}
+\begin{align}
+    \nonumber
+    \xi_{\mu\nu}
+    &= \int \pert{\density}{0}\pert{\hamiltonian}{B,B}_{\mu\nu} \ud r
+    +  \int \pert{\density}{B}_{\mu}\pert{\hamiltonian}{B}_{\nu} \ud r
+\end{align}
+
+\vspace{5mm}
+
+\textbf{NMR shielding tensor}
+\begin{align}
+    \nonumber
+    \big[\sigma_K\big]_{\mu\nu}
+    &= \int \pert{\density}{0}\pert{\hamiltonian}{B,M_K}_{\mu\nu} \ud r
+    +  \int \pert{\density}{B}_{\mu}\pert{\hamiltonian}{M_K}_{\nu} \ud r
+\end{align}
+
+\vspace{5mm}
+
+\begin{itemize}
+    \item   $\mu,\nu=x,y,z$ are components of the perturbing fields
+    \item   $\xi$ and $\sigma_K$ of \textbf{all} nuclei computed from the
+            \textbf{same} perturbed density $\pert{\density}{B}$
+    \item   $\pert{\density}{B}_\mu$ means density perturbed by
+            $\pert{\hamiltonian}{B}_\mu$, e.i. the magnetic field component $B_\mu$
+    \item   For NMR shieldings, the order of the perturbations can be swapped
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Magnetic linear response}
-
 \centering
 \textbf{Sternheimer equations}
 \begin{equation}
     \nonumber
-    \ket{\orbital_i^{(B)}} =\
-    -2\Helmholtz{\hat{V}^{(0)}\ket{\orbital_i^{(B)}}
-    + \left(1 - \hat{\rho}^{(0)}\right)\hat{F}^{(B)}\ket{\orbital_i^{(0)}}}
+    \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
+    \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
+    \sum_j \Big(\pert{F}{0}_{ji} - \pert{\Lambda}{0}_{ji}\Big)
+    \ket{\pert{\orbital_j}{1}} +
+    \Big(1 - \pert{\density}{0}\Big)
+    \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
+    \bigg]
 \end{equation}
 
 \vspace{5mm}
 
+\only<1>{
 \textbf{Perturbed Fock operator}
 \begin{equation}
     \nonumber
-    \hat{F}^{(B)} = \hat{h}^{(B)} + \hat{J}^{(1)} + \hat{K}^{(1)} +
+    \hat{F}^{(B)} = \hat{h}^{(B)} + \hat{J}^{(1)} - \alpha\hat{K}^{(1)} +
     \hat{V}_{xc}^{(1)}
 \end{equation}
+}
 
-\vspace{10mm}
+\only<2>{
+\textbf{Perturbed Fock operator}
+\begin{equation}
+    \nonumber
+    \hat{F}^{(B)} = \hat{h}^{(B)} + \cancel{\hat{J}^{(1)}} - \alpha\hat{K}^{(1)} +
+    \cancel{\hat{V}_{xc}^{(1)}}
+\end{equation}
+}
+
+\vspace{5mm}
+
+\textbf{Perturbed density vanishes for imaginary (static) perturbations}
+\begin{equation}
+    \nonumber
+    \pert{\rho}{B}(r,r) = \sum_i 
+    \bigg[
+    \orbital_i^{(0)}(r)\orbital_i^{(B)\dagger}(r) +
+    \orbital_i^{(B)}(r)\orbital_i^{(0)\dagger}(r)
+    \bigg]
+    \equiv 0
+\end{equation}
+
+\vspace{5mm}
 
 \pause
-\textbf{NMR shielding evaluation}
-\begin{align}
-    \nonumber
-    \sigma_K^{dia} 
-    &= \int \hat{\rho}^{(0)}\hat{h}^{(B,M_K)} \ud r \quad
-    = \sum_i\bra{\orbital_i^{(0)}}\hat{h}^{(B,M_K)}\ket{\orbital_i^{(0)}} \\
-    \nonumber
-    \sigma_K^{para} 
-    &= \int \hat{\rho}^{(B)}\hat{h}^{(M_K)} \ud r \qquad
-    = \sum_i
-    \bra{\orbital_i^{(0)}}\hat{h}^{(M_K)}\ket{\orbital_i^{(B)}}\ +\ 
-    \bra{\orbital_i^{(B)}}\hat{h}^{(M_K)}\ket{\orbital_i^{(0)}}
-\end{align}
+\begin{itemize}
+    \item   Pure functionals ($\alpha=0$): \textbf{no two-electron contributions}
+    \item   Fundamental defect of standard DFT: \textbf{no current dependence}
+\end{itemize}
+
 \end{frame}
 
-%\begin{frame}
-%\frametitle{Magnesium Oxide}
-    
-%\centering
-%\textbf{Hartree-Fock shielding constant (ppm)}
-%\begin{table}
-%\begin{tabular}{crrr}
-%\hline
-%\hline
-%    &              &            &             \\
-%    &              &
-%\multicolumn{1}{c}{$\sigma(Mg)$}              &
-%\multicolumn{1}{c}{$\sigma(O)$}	              \\
-%    &              &            &             \\
-%MW  & $10^{-4}$    &  1538.9211 & -16726.3490 \\
-%    & $10^{-5}$    &  1584.1109 & -17466.4867 \\
-%    & $10^{-6}$    &  1578.7322 & -17358.6849 \\
-%    & $10^{-7}$    &  1579.4610 & -17375.4221 \\
-%    &              &            &             \\
-%GTO & pcS-4        &  1617.5056 & -18143.8405 \\
-%    & pcS-3        &  1757.7204 & -20822.5428 \\
-%    & pcS-2        &-19388.2423 & 386900.5044 \\
-%    & pcS-1        &    94.4529 &  11293.4315 \\
-%    & pcS-0        &   448.6993 &   4880.3077 \\
-%    &              &            &             \\
-%\hline
-%\hline
-%\end{tabular}
-%\end{table}
-%
-%Frank Jensen's polarization consistent basis sets\\
-%GTO calculations with Dalton
-%
-%\end{frame}
