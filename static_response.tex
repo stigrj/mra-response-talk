@@ -1,3 +1,63 @@
+
+\begin{frame}
+    \frametitle{Static linear response}
+    \begin{columns}
+    \begin{column}[b]{0.5\linewidth}
+    \centering
+    \textbf{Static perturbation}
+    \begin{equation}
+        \nonumber
+        \hat{H} = \pert{\hamiltonian}{0} + \pert{\hamiltonian}{1}
+    \end{equation}
+    \end{column}
+
+    \begin{column}[b]{0.5\linewidth}
+    \centering
+    \textbf{Perturbed orbitals}
+    \begin{equation}
+        \nonumber
+        \orbital_i = \pert{\orbital_i}{0} + \pert{\orbital_i}{1}
+    \end{equation}
+    \end{column}
+    \end{columns}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Perturbed Fock operator}
+    \begin{align}
+        \nonumber
+        \pert{\fockOper}{1} &= \pert{\hamiltonian}{1} + \pert{\potential}{1}
+    \end{align}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Sternheimer equations}
+    \begin{equation}
+        \nonumber
+        \pert{\fockOper}{0}\ket{\pert{\orbital_i}{1}} +
+        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}} =
+        \sum_j \pert{F_{ji}}{0}\ket{\pert{\orbital_j}{1}} + 
+        \sum_j \pert{F_{ji}}{1}\ket{\pert{\orbital_j}{0}}
+    \end{equation}
+
+    \vspace{5mm}
+
+    \centering
+    \textbf{Integral form} $\lambda_{i} \approx \pert{F}{0}_{ii}$
+    \begin{equation}
+        \nonumber
+        \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
+        \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
+        \sum_j \Big(\pert{F}{0}_{ji} - \Lambda_{ji}\Big)
+        \ket{\pert{\orbital_j}{1}} +
+        \Big(1 - \pert{\density}{0}\Big)
+        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
+        \bigg]
+    \end{equation}
+\end{frame}
+
 \begin{frame}
     \frametitle{Unperturbed system}
     \begin{columns}
@@ -62,81 +122,6 @@
         \ket{\orbital_i} = -2\hat{G}_i\bigg[\potential\ket{\orbital_i} -
         \sum_j \Big(F_{ji} - \Lambda_{ji}\Big)\ket{\orbital_j}\bigg]
     \end{equation}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Perturbed system}
-    \begin{columns}
-    \begin{column}[b]{0.5\linewidth}
-    \centering
-    \textbf{Static perturbation}
-    \begin{equation}
-        \nonumber
-        \hat{H} = \pert{\hamiltonian}{0} + \pert{\hamiltonian}{1}
-    \end{equation}
-    \end{column}
-
-    \begin{column}[b]{0.5\linewidth}
-    \centering
-    \textbf{Perturbed orbitals}
-    \begin{equation}
-        \nonumber
-        \orbital_i = \pert{\orbital_i}{0} + \pert{\orbital_i}{1}
-    \end{equation}
-    \end{column}
-    \end{columns}
-
-    \vspace{5mm}
-
-    \centering
-    \textbf{Perturbed Fock operator}
-    \begin{align}
-        \nonumber
-        \pert{\fockOper}{1} &= \pert{\hamiltonian}{1} + \pert{\potential}{1}
-    \end{align}
-
-    \vspace{5mm}
-
-    \centering
-    \textbf{Sternheimer equations}
-    \begin{equation}
-        \nonumber
-        \pert{\fockOper}{0}\ket{\pert{\orbital_i}{1}} +
-        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}} =
-        \sum_j \pert{F_{ji}}{0}\ket{\pert{\orbital_j}{1}} + 
-        \sum_j \pert{F_{ji}}{1}\ket{\pert{\orbital_j}{0}}
-    \end{equation}
-
-    \vspace{5mm}
-
-    \centering
-    \textbf{Integral form} $\lambda_{i} \approx \pert{F}{0}_{ii}$
-    \begin{equation}
-        \nonumber
-        \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
-        \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
-        \sum_j \Big(\pert{F}{0}_{ji} - \Lambda_{ji}\Big)
-        \ket{\pert{\orbital_j}{1}} +
-        \Big(1 - \pert{\density}{0}\Big)
-        \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
-        \bigg]
-    \end{equation}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Perturbed system}
-    \centering
-    \textbf{Density operators}
-    \begin{align}
-        \nonumber
-        \pert{\density}{0} &= \sum_i
-        \ket{\pert{\orbital_i}{0}}\bra{\pert{\orbital_i}{0}}\\
-        \nonumber
-        \pert{\density}{1} &= \sum_i \bigg[
-        \ket{\pert{\orbital_i}{0}}\bra{\pert{\orbital_i}{1}} +
-        \ket{\pert{\orbital_i}{1}}\bra{\pert{\orbital_i}{0}} \bigg]
-    \end{align}
 \end{frame}
 
 \begin{frame}
@@ -242,3 +227,67 @@
     \end{align}
 }
 \end{frame}
+
+\begin{frame}
+\frametitle{Magnetic linear response}
+\centering
+\textbf{Sternheimer equations}
+\begin{equation}
+    \nonumber
+    \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
+    \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
+    \sum_j \Big(\pert{F}{0}_{ji} - \pert{\Lambda}{0}_{ji}\Big)
+    \ket{\pert{\orbital_j}{1}} +
+    \Big(1 - \pert{\density}{0}\Big)
+    \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
+    \bigg]
+\end{equation}
+
+\vspace{5mm}
+
+\only<1>{
+\textbf{Perturbed Fock operator}
+\begin{equation}
+    \nonumber
+    \hat{F}^{(B)} = \hat{h}^{(B)} + \hat{J}^{(1)} - \alpha\hat{K}^{(1)} +
+    \hat{V}_{xc}^{(1)}
+\end{equation}
+}
+
+\only<2>{
+\textbf{Perturbed Fock operator}
+\begin{equation}
+    \nonumber
+    \hat{F}^{(B)} = \hat{h}^{(B)} + \cancel{\hat{J}^{(1)}} - \alpha\hat{K}^{(1)} +
+    \cancel{\hat{V}_{xc}^{(1)}}
+\end{equation}
+}
+
+\vspace{5mm}
+
+\textbf{Perturbed density vanishes for imaginary (static) perturbations}
+\begin{equation}
+    \nonumber
+    \pert{\rho}{B}(r,r) = \sum_i 
+    \bigg[
+    \orbital_i^{(0)}(r)\orbital_i^{(B)\dagger}(r) +
+    \orbital_i^{(B)}(r)\orbital_i^{(0)\dagger}(r)
+    \bigg]
+    \equiv 0
+\end{equation}
+
+\vspace{5mm}
+
+\pause
+\begin{columns}
+\begin{column}[b]{0.1\linewidth}
+\end{column}
+\begin{column}[b]{0.9\linewidth}
+\begin{itemize}
+    \item   Pure functionals ($\alpha=0$): \textbf{no two-electron contributions}
+    \item   Fundamental defect of standard DFT: \textbf{no current dependence}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+

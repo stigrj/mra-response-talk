@@ -1,4 +1,103 @@
 \begin{frame}
+    \frametitle{Magnetic properties}
+    \centering
+    \textbf{The electronic Hamiltonian in an external magnetic field}
+    \begin{align}
+        \nonumber
+        H(\bs{B},\bs{M}) =& \frac{1}{2}\sum_i\Big(-i\nabla + \bs{A}\Big)^2
+        -\sum_i\bs{m}_i\cdot\bs{B}(\bs{r_i}) - \sum_{iK}\frac{Z_K}{r_{iK}}
+        +\frac{1}{2}\sum_{i \neq j}\frac{1}{r_{ij}}\\
+        \nonumber
+        & + \frac{1}{2}\sum_{K \neq L}
+        \frac{Z_K Z_L}{R_{KL}} - \sum_K\bs{M}_K\cdot\bs{B}(\bs{R}_K) +
+        \sum_{K>L}\bs{M}_K^TD_{KL}\bs{M}_L
+    \end{align}
+
+    \vspace{10mm}
+
+    \textbf{The vector potential defines the magnetic field}
+    \begin{equation}
+        \nonumber
+        \bs{B}(\bs{r}_i) = \nabla_i \times \bs{A}(\bs{r}_i)
+    \end{equation}
+
+    \vspace{10mm}
+
+    \textbf{The vector potential depends on the choice of origin,\\
+    but the magnetic field does not}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Magnetic properties}
+    \begin{exampleblock}{{
+        \begin{center}
+        \it{''
+        In theory, theory and practice are the same,\\
+        in practice they are not
+        ''}
+        \end{center}
+        }}
+	\vskip2mm
+	\hspace*\fill{--- Albert Einstein (?)}
+    \end{exampleblock}
+
+    \pause
+    \vspace{10mm}
+
+    \centering
+    \textbf{The gauge origin problem}\\
+    In theory not a problem, the physics is\\
+    independent of the choice of origin\\
+
+    \vspace{5mm}
+
+    In practice the chioce of origin affects the quality of the\\
+    results whenever \textbf{incomplete} basis sets are used
+\end{frame}
+
+\begin{frame}
+    \frametitle{Magnetic properties}
+    \centering
+    \textbf{Several solutions proposed}
+
+    \begin{columns}
+    \begin{column}[b]{0.1\linewidth}
+    \end{column}
+    \begin{column}[b]{0.9\linewidth}
+    \begin{itemize}
+        \item   Individual Gauge for Localized Orbitals (IGLO)
+        \item   Localized Orbitals/Local Origin (LORG)
+        \item   Gauge-Including Atomic Orbitals (GIAO or London AOs)
+    \end{itemize}
+    \end{column}
+    \end{columns}
+
+    \vspace{5mm}
+
+    \textbf{London Atomic Orbitals}
+    \begin{equation}
+        \nonumber
+        \chi_\mu(\bs{r}) =
+        e^{(-i/2)(\bs{B}\times[\bs{R}_\mu-\bs{R}_O]\cdot\bs{r})}\chi_\mu^{(0)}(\bs{r})
+    \end{equation}
+
+    \vspace{5mm}
+
+    \textbf{History}
+    \begin{columns}
+    \begin{column}[b]{0.1\linewidth}
+    \end{column}
+    \begin{column}[b]{0.9\linewidth}
+    \begin{itemize}
+        \item   IGLO most popular in the 80's
+        \item   London orbitals introduced already in the 30's,\\
+                but first efficient implementation in 90's
+        \item   London orbitals completely dominating last 20 years
+    \end{itemize}
+    \end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}
 \frametitle{Magnetic properties}
 
 \centering
@@ -183,62 +282,3 @@
     \item   For NMR shieldings, the order of the perturbations can be swapped
 \end{itemize}
 \end{frame}
-
-\begin{frame}
-\frametitle{Magnetic linear response}
-\centering
-\textbf{Sternheimer equations}
-\begin{equation}
-    \nonumber
-    \ket{\pert{\orbital_i}{1}} = -2\hat{G}_i\bigg[
-    \pert{\potential}{0}\ket{\pert{\orbital_i}{1}} -
-    \sum_j \Big(\pert{F}{0}_{ji} - \pert{\Lambda}{0}_{ji}\Big)
-    \ket{\pert{\orbital_j}{1}} +
-    \Big(1 - \pert{\density}{0}\Big)
-    \pert{\fockOper}{1}\ket{\pert{\orbital_i}{0}}
-    \bigg]
-\end{equation}
-
-\vspace{5mm}
-
-\only<1>{
-\textbf{Perturbed Fock operator}
-\begin{equation}
-    \nonumber
-    \hat{F}^{(B)} = \hat{h}^{(B)} + \hat{J}^{(1)} - \alpha\hat{K}^{(1)} +
-    \hat{V}_{xc}^{(1)}
-\end{equation}
-}
-
-\only<2>{
-\textbf{Perturbed Fock operator}
-\begin{equation}
-    \nonumber
-    \hat{F}^{(B)} = \hat{h}^{(B)} + \cancel{\hat{J}^{(1)}} - \alpha\hat{K}^{(1)} +
-    \cancel{\hat{V}_{xc}^{(1)}}
-\end{equation}
-}
-
-\vspace{5mm}
-
-\textbf{Perturbed density vanishes for imaginary (static) perturbations}
-\begin{equation}
-    \nonumber
-    \pert{\rho}{B}(r,r) = \sum_i 
-    \bigg[
-    \orbital_i^{(0)}(r)\orbital_i^{(B)\dagger}(r) +
-    \orbital_i^{(B)}(r)\orbital_i^{(0)\dagger}(r)
-    \bigg]
-    \equiv 0
-\end{equation}
-
-\vspace{5mm}
-
-\pause
-\begin{itemize}
-    \item   Pure functionals ($\alpha=0$): \textbf{no two-electron contributions}
-    \item   Fundamental defect of standard DFT: \textbf{no current dependence}
-\end{itemize}
-
-\end{frame}
-
